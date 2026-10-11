@@ -63,7 +63,20 @@ On first launch Dustbunny asks you to choose the folder to tidy (pick your Deskt
 - **Undo Last Sweep** puts every file from the last sweep back where it was.
 - Optional: turn off the animation, open at login.
 
-To uninstall, quit Dustbunny from its menu and drag it from Applications to the Trash. Your screenshots stay where they are.
+## Uninstall
+
+1. If you turned on **Open Dustbunny at login**, turn it off in Dustbunny's settings first.
+2. Paste this into Terminal:
+
+```sh
+osascript -e 'if application id "org.dustbunny.Dustbunny" is running then tell application id "org.dustbunny.Dustbunny" to quit'
+rm -rf /Applications/Dustbunny.app ~/Applications/Dustbunny.app
+rm -rf ~/Library/Containers/org.dustbunny.Dustbunny
+```
+
+The first line quits Dustbunny if it's running. The second deletes the app. The third deletes its saved settings (the folder you chose, your schedule and the undo list). macOS may ask whether Terminal can access data from other apps; click **Allow** so it can delete the settings.
+
+**Your screenshots are not touched.** Anything Dustbunny already sorted stays in its `Screenshots/<date>/` folders. To put files back on the Desktop, use **Undo Last Sweep** before uninstalling, or drag them out yourself.
 
 ## Privacy & security
 
@@ -103,7 +116,7 @@ Dustbunny keeps nothing about you anywhere except your own Mac, and even there i
 - There are **no accounts, IDs, analytics, logs or crash reporters**. Nobody, including the authors, can see that you use Dustbunny, how often, or what it moved.
 - **Building it** reads no environment variables except the optional `SIGN_IDENTITY` and `BUNDLE_ID` described below. Nothing about your machine is written into the app.
 
-To remove every trace, quit Dustbunny, delete the app, and delete `~/Library/Containers/org.dustbunny.Dustbunny`.
+To remove every trace, follow the [Uninstall](#uninstall) steps.
 
 ## Development
 
