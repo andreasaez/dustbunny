@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Run inside the App Sandbox. With no network entitlements, the kernel blocks all
+	     incoming and outgoing network connections. -->
+	<key>com.apple.security.app-sandbox</key>
+	<true/>
+	<!-- The only file access: the one folder the user picks in an Open panel. -->
+	<key>com.apple.security.files.user-selected.read-write</key>
+	<true/>
+	<!-- Remember that one folder across launches. -->
+	<key>com.apple.security.files.bookmarks.app-scope</key>
+	<true/>
+</dict>
+</plist>

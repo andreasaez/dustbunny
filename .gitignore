@@ -1,0 +1,20 @@
+.build/
+build/
+.swiftpm/
+*.xcodeproj/
+xcuserdata/
+.DS_Store
+
+# Never commit secrets, signing material or local environment files
+.env
+.env.*
+*.p12
+*.pem
+*.key
+*.cer
+*.certSigningRequest
+*.provisionprofile
+*.mobileprovision
+*.keychain*
+*.dSYM/
+DerivedData/
