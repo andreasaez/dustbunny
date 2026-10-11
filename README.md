@@ -15,35 +15,44 @@ Dustbunny is free and open source under the [MIT License](LICENSE). **Anyone** m
 
 There is no account, no sign-up, no paid tier, and nothing phones home. Once it's built, it runs entirely on your own Mac.
 
-## Get Dustbunny
+## Install
 
-### Option 1: Build it yourself (recommended)
-
-Building from source means you run exactly the code you can read in this repository. It takes about a minute.
-
-You need a Mac running **macOS 14 (Sonoma) or later** and Apple's developer tools: either [Xcode](https://apps.apple.com/app/xcode/id497799835) or the free Command Line Tools (`xcode-select --install`).
-
-Get the code with the green **Code** button on this page (**Download ZIP**, then unzip it), or `git clone` this repository. Then, in Terminal, from the `dustbunny` folder:
+Paste this into Terminal:
 
 ```sh
-./scripts/build.sh
-mv build/Dustbunny.app /Applications/
-open /Applications/Dustbunny.app
+curl -fsSL https://raw.githubusercontent.com/andreasaez/dustbunny/main/install.sh | bash
 ```
 
-No account, API key or download is needed during the build. Dustbunny has no third-party dependencies.
+That's it. The 🐇 appears in your menu bar and asks which folder to tidy (pick your Desktop).
 
-### Option 2: Fork it
+The installer downloads the source code, builds it on your Mac (about a minute), checks the app has exactly Dustbunny's three sandbox permissions, copies it to Applications and opens it. It never uses `sudo` or asks for your password. Because the app is built on your own Mac, macOS opens it without any "unverified developer" warning.
 
-Click **Fork** on GitHub, make whatever changes you like, and build it with the same steps. If you share your version with other people, please give it your own app identifier, so it doesn't clash with anyone else's copy of Dustbunny:
+**Requirements:** macOS 14 (Sonoma) or later, and Apple's free developer tools. If you don't have them, the installer tells you to run `xcode-select --install` first.
+
+**Prefer to read the installer before running it?** That's a good habit. Do this instead:
+
+```sh
+git clone https://github.com/andreasaez/dustbunny.git
+cd dustbunny
+less install.sh        # read it
+./install.sh
+```
+
+To update later, run the same command again. Your settings are kept.
+
+### Fork it
+
+Click **Fork** on GitHub, make whatever changes you like, and install your version with `./install.sh`. If you share your version with other people, please give it your own app identifier, so it doesn't clash with anyone else's copy of Dustbunny:
 
 ```sh
 BUNDLE_ID=com.yourname.Dustbunny ./scripts/build.sh
 ```
 
+If you publish your own one-line installer, change the repository address at the top of `install.sh` to your fork.
+
 ### Opening a copy someone else built
 
-A build made with `./scripts/build.sh` is signed for the Mac it was built on, not with an Apple Developer ID. If you copy it to another Mac, macOS will say it can't verify the developer. To open it anyway, go to **System Settings → Privacy & Security** and click **Open Anyway**. Only do this for a copy from someone you trust. Building it yourself avoids the warning entirely.
+A Dustbunny build is signed for the Mac it was built on, not with an Apple Developer ID. If you copy a built app to another Mac, macOS will say it can't verify the developer. To open it anyway, go to **System Settings → Privacy & Security** and click **Open Anyway**. Only do this for a copy from someone you trust. Building it yourself avoids the warning entirely.
 
 ## Using it
 
@@ -54,7 +63,7 @@ On first launch Dustbunny asks you to choose the folder to tidy (pick your Deskt
 - **Undo Last Sweep** puts every file from the last sweep back where it was.
 - Optional: turn off the animation, open at login.
 
-To uninstall, quit Dustbunny from its menu and drag it to the Trash. Your screenshots stay where they are.
+To uninstall, quit Dustbunny from its menu and drag it from Applications to the Trash. Your screenshots stay where they are.
 
 ## Privacy & security
 
