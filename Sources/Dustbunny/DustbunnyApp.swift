@@ -47,6 +47,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         reply.setParam(NSAppleEventDescriptor(int32: Int32(errAEEventNotHandled)), forKeyword: keyErrorNumber)
     }
 
+    /// Opening the app again (e.g. double-clicking it in Applications while it's already running) has nothing to
+    /// show by default, because Dustbunny lives in the menu bar. Show Settings so the open visibly does something.
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        MainActor.assumeIsolated {
+            SettingsWindow.show(AppModel.shared)
+        }
+        return false
+    }
+
     // Belt and braces: if a file or URL open request ever gets through, ignore it.
     func application(_ application: NSApplication, open urls: [URL]) {}
 }
