@@ -60,7 +60,7 @@ On first launch Dustbunny asks you to choose the folder to tidy (pick your Deskt
 
 - **Run Dustbunny Now** (⌘R in the menu) sweeps immediately.
 - **Sweep every evening** runs once a day at the time you choose (default 18:00). If your Mac was asleep at that time, it catches up when it wakes the same day.
-- **Undo Last Sweep** puts every file from the last sweep back where it was.
+- **Undo Last Sweep** (in the app window and the 🐇 menu) puts every file from the last sweep back where it was.
 - Optional: turn off the animation, open at login.
 
 ## Uninstall

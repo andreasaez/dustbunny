@@ -42,6 +42,14 @@ struct SettingsView: View {
             .tint(Theme.pink)
             .disabled(model.folderURL == nil || model.isRunning)
 
+            Button { model.undoLastSweep() } label: {
+                Label("Undo Last Sweep", systemImage: "arrow.uturn.backward")
+                    .frame(maxWidth: .infinity)
+            }
+            .glassButtonStyle()
+            .disabled(!model.canUndo || model.isRunning)
+            .help(model.canUndo ? "Put every file from the last sweep back where it was." : "Nothing to undo yet.")
+
             GlassCard(title: "Folder to tidy", systemImage: "folder") {
                 HStack(spacing: 10) {
                     if let folder = model.folderURL {
