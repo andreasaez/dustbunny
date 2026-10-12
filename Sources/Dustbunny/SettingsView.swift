@@ -42,14 +42,6 @@ struct SettingsView: View {
             .tint(Theme.pink)
             .disabled(model.folderURL == nil || model.isRunning)
 
-            Button { model.undoLastSweep() } label: {
-                Label("Undo Last Sweep", systemImage: "arrow.uturn.backward")
-                    .frame(maxWidth: .infinity)
-            }
-            .glassButtonStyle()
-            .disabled(!model.canUndo || model.isRunning)
-            .help(model.canUndo ? "Put every file from the last sweep back where it was." : "Nothing to undo yet.")
-
             GlassCard(title: "Folder to tidy", systemImage: "folder") {
                 HStack(spacing: 10) {
                     if let folder = model.folderURL {
@@ -101,7 +93,7 @@ struct SettingsView: View {
             }
 
             Label {
-                Text("Dustbunny only reads file names. It never opens files, can't connect to the internet, and touches nothing outside the folder you choose. Files are moved, never deleted, and the last sweep can be undone from the menu bar.")
+                Text("Dustbunny only reads file names. It never opens files, can't connect to the internet, and touches nothing outside the folder you choose. Files are moved, never deleted, and the last sweep can be undone.")
             } icon: {
                 Image(systemName: "lock.shield")
             }
@@ -109,6 +101,17 @@ struct SettingsView: View {
             .foregroundStyle(.secondary)
             .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal, 4)
+
+            HStack {
+                Spacer()
+                Button { model.undoLastSweep() } label: {
+                    Label("Undo Last Sweep", systemImage: "arrow.uturn.backward")
+                }
+                .controlSize(.small)
+                .glassButtonStyle()
+                .disabled(!model.canUndo || model.isRunning)
+                .help(model.canUndo ? "Put every file from the last sweep back where it was." : "Nothing to undo yet.")
+            }
         }
         .padding(.horizontal, 20)
         .padding(.top, 34) // room for the window's close button
