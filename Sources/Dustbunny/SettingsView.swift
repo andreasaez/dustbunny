@@ -81,6 +81,17 @@ struct SettingsView: View {
             .toggleStyle(.switch)
             .tint(Theme.pink)
 
+            HStack {
+                Button { model.undoLastSweep() } label: {
+                    Label("Undo Last Sweep", systemImage: "arrow.uturn.backward")
+                }
+                .controlSize(.small)
+                .glassButtonStyle()
+                .disabled(!model.canUndo || model.isRunning)
+                .help(model.canUndo ? "Put every file from the last sweep back where it was." : "Nothing to undo yet.")
+                Spacer()
+            }
+
             if let error = model.errorMessage {
                 GlassCard(title: "Something needs attention", systemImage: "exclamationmark.triangle", tint: .orange) {
                     Text(error)
@@ -101,17 +112,6 @@ struct SettingsView: View {
             .foregroundStyle(.secondary)
             .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal, 4)
-
-            HStack {
-                Spacer()
-                Button { model.undoLastSweep() } label: {
-                    Label("Undo Last Sweep", systemImage: "arrow.uturn.backward")
-                }
-                .controlSize(.small)
-                .glassButtonStyle()
-                .disabled(!model.canUndo || model.isRunning)
-                .help(model.canUndo ? "Put every file from the last sweep back where it was." : "Nothing to undo yet.")
-            }
         }
         .padding(.horizontal, 20)
         .padding(.top, 34) // room for the window's close button
