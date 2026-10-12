@@ -99,7 +99,7 @@ main() {
     say "Installed to $target"
 
     open "$target"
-    say "Done! Look for the 🐇 in your menu bar and choose the folder to tidy."
+    say "Done! Dustbunny is in your Dock and menu bar (🐇). Choose the folder to tidy."
 }
 
 main "$@"

@@ -1,6 +1,6 @@
 # Dustbunny 🐇
 
-A tiny macOS menu bar app that sweeps loose screenshots off your Desktop into dated folders every evening, with a little vacuum animation.
+A tiny macOS app that sweeps loose screenshots off your Desktop into dated folders every evening, with a little vacuum animation.
 
 ```
 Desktop/
@@ -23,7 +23,7 @@ Paste this into Terminal:
 curl -fsSL https://raw.githubusercontent.com/andreasaez/dustbunny/main/install.sh | bash
 ```
 
-That's it. The 🐇 appears in your menu bar and asks which folder to tidy (pick your Desktop).
+That's it. Dustbunny opens in your Dock and menu bar (look for the 🐇) and asks which folder to tidy (pick your Desktop).
 
 The installer downloads the source code, builds it on your Mac (about a minute), checks the app has exactly Dustbunny's three sandbox permissions, copies it to Applications and opens it. It never uses `sudo` or asks for your password. Because the app is built on your own Mac, macOS opens it without any "unverified developer" warning.
 
@@ -56,7 +56,7 @@ A Dustbunny build is signed for the Mac it was built on, not with an Apple Devel
 
 ## Using it
 
-On first launch Dustbunny asks you to choose the folder to tidy (pick your Desktop). After that it lives in the menu bar as a 🐇.
+On first launch Dustbunny asks you to choose the folder to tidy (pick your Desktop). After that it lives in your Dock and in the menu bar as a 🐇. Click either one to run a sweep or open Settings.
 
 - **Run Dustbunny Now** (⌘R in the menu) sweeps immediately.
 - **Sweep every evening** runs once a day at the time you choose (default 18:00). If your Mac was asleep at that time, it catches up when it wakes the same day.

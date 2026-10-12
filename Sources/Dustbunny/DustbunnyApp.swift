@@ -47,8 +47,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         reply.setParam(NSAppleEventDescriptor(int32: Int32(errAEEventNotHandled)), forKeyword: keyErrorNumber)
     }
 
-    /// Opening the app again (e.g. double-clicking it in Applications while it's already running) has nothing to
-    /// show by default, because Dustbunny lives in the menu bar. Show Settings so the open visibly does something.
+    /// Clicking the Dock icon, or opening the app again while it's running, shows Settings. Dustbunny has no other
+    /// window, so without this the click would do nothing visible.
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         MainActor.assumeIsolated {
             SettingsWindow.show(AppModel.shared)
